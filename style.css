@@ -1,0 +1,144 @@
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c0f13;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#wrapper-div {
+  height: 80%;
+  width: 65%;
+}
+
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+#input-search {
+  width: 300px;
+  outline: solid 3px #7e846b;
+  outline-offset: 0px;
+  border: none;
+  border-radius: 6px;
+  transition-duration: 500ms;
+  font-size: 1.5rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #1c0f13;
+  color: white;
+  padding: 6px;
+  cursor: text;
+}
+
+#input-search:hover {
+  outline: solid 3px #7e846b;
+  outline-offset: 4px;
+  transition-duration: 200ms;
+}
+
+#search-icon {
+  cursor: pointer;
+  transition-duration: 500ms;
+  filter: brightness(0) saturate(100%) invert(48%) sepia(7%) saturate(896%)
+    hue-rotate(34deg) brightness(105%) contrast(89%);
+  transform: scale(1.2);
+}
+
+#search-icon:hover {
+  transition-duration: 200ms;
+  transform: scale(1.3);
+}
+
+#data-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  margin-top: 24px;
+  border-radius: 24px;
+  color: white;
+  font-size: 1.5rem;
+  padding: 24px;
+  background-color: #7e846b;
+  gap: 24px;
+}
+
+.data-day-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #38f;
+  border-radius: 24px;
+  min-width: 350px;
+  padding: 12px;
+  justify-items: center;
+}
+
+.data-city {
+  grid-area: 1 / 1 / 3 / 3;
+  margin-bottom: 24px;
+}
+
+.data-day {
+  display: flex;
+  justify-content: center;
+  grid-area: 1 / 1 / 1 / 3;
+  margin-bottom: 0px;
+}
+
+.data-icon-wrapper {
+  height: min-content;
+  width: min-content;
+  overflow: hidden;
+}
+
+.data-temp-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.data-temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.data-condition,
+.data-humidity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1250px) {
+    #wrapper-div {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    #wrapper-div {
+      width: 90%;
+    }
+  
+    #data-div {
+      grid-template-columns: 1fr;
+    }
+  
+    .data-city {
+      grid-area: 1 / 1 / 1 / 1;
+    }
+  }
