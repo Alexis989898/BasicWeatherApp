@@ -1,21 +1,28 @@
 const dataDiv = document.getElementById("data-div");
 const search = document.getElementById("input-search");
+const searchBtn = document.getElementById("search-icon");
+
+searchBtn.addEventListener("click", () => {
+    const searchText = search.value;
+    getWeather(searchText);
+})
 
 async function getWeather(location) {
     try {
-        
+
         const API = await "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
             location + "?key=UTAKRE8PYSWAGMBMUZDLFJVQ8" + "&unitGroup=metric"
 
         const requestData = await fetch(API, { mode: 'cors' });
         const weatherData = await requestData.json();
-        
+
         // Test line:
         // const weatherData = await fetch('weather.json', { mode: 'cors' }).then((response) => response.json());
+        dataDiv.innerHTML = "";
         displayWeather(weatherData);
     } catch (error) {
         console.error(error);
-
+        dataDiv.innerText = "Error! Alter your search";
     }
 }
 
@@ -42,6 +49,12 @@ async function displayWeather(weatherData) {
         iconWrapper.className = "data-icon-wrapper";
         iconWrapper.innerHTML = icon;
         day.appendChild(iconWrapper);
+
+        const svg = iconWrapper.querySelector('svg'); // Select the <svg> inside the wrapper
+        if (svg) {
+            svg.setAttribute('width', '100%');  // Set desired width
+            svg.setAttribute('height', '100%'); // Set desired height
+        }
 
         const avgTemp = document.createElement("div");
         avgTemp.className = "data-temp";
@@ -94,6 +107,12 @@ async function displayWeather(weatherData) {
         iconWrapper.innerHTML = icon;
         day.appendChild(iconWrapper);
 
+        const svg = iconWrapper.querySelector('svg'); // Select the <svg> inside the wrapper
+        if (svg) {
+            svg.setAttribute('width', '100%');  // Set desired width
+            svg.setAttribute('height', '100%'); // Set desired height
+        }
+
         const avgTemp = document.createElement("div");
         avgTemp.className = "data-temp";
         avgTemp.innerText = `Avg: ${tomorrowData.temp}°C`;
@@ -126,7 +145,3 @@ async function displayWeather(weatherData) {
     }
 
 }
-
-
-
-getWeather("Santa Barbara d'Oeste");
